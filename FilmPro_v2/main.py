@@ -5,12 +5,13 @@ from agno.tools.websearch import WebSearchTools
 from dotenv import load_dotenv
 from models.movies import MovieRecommendation
 import asyncio
+from tools.omdb import search_movie
 
 load_dotenv()
 
 movie_recommendation_agent = Agent(
     name="FilmPro",
-    tools=[WebSearchTools(backend="duckduckgo")],
+    tools=[WebSearchTools(backend="duckduckgo"), search_movie],
     model=OpenAIChat(id="gpt-4o"),
     description=description,
     instructions=instructions,
@@ -21,8 +22,8 @@ movie_recommendation_agent = Agent(
     debug_level=1,
 )
 
-input = """Estou procurando filmes similares ao Tropa de Elite. 
-Gosto de filmes de ação, policial, drama realista com narrativa intensa e abordagem crua."""
+input = """Estou procurando filmes similares ao Star Wars. 
+Gosto de filmes de ação."""
 async def recommendations():
     result = await movie_recommendation_agent.arun(
         input,
