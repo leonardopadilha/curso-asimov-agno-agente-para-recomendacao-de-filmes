@@ -5,7 +5,7 @@ from typing import Any
 async def search_movie(title: str) -> dict[str, Any] | str:
     api_key = os.getenv("OMDB_API_KEY")
     if not api_key:
-        raise ValueError("OMDB_API_KEY is not set")
+        raise ValueError("OMDB_API_KEY não configurada")
 
     async with aiohttp.ClientSession() as session:
         try:
