@@ -22,11 +22,9 @@ movie_recommendation_agent = Agent(
     debug_level=1,
 )
 
-input = """Estou procurando filmes similares ao Star Wars. 
-Gosto de filmes de ação."""
-async def recommendations():
+async def recommendations(preferences: str):
     result = await movie_recommendation_agent.arun(
-        input,
+        preferences,
         stream=False
     )
 
@@ -34,5 +32,4 @@ async def recommendations():
         data: MovieRecommendation = result.content
         pretty_json_output = data.model_dump_json(indent=2)
         print(pretty_json_output)
-
-    return result
+        return data
