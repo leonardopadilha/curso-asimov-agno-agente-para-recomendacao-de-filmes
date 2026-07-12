@@ -1,0 +1,64 @@
+/* FilmPro — estilos complementares ao Tailwind (efeitos que o design system usa fora das classes utilitárias) */
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #050505;
+}
+
+.font-bricolage {
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+/* Fundo estrelado (mesmo efeito do design system) */
+.stars {
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 40px 70px, #ffffff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 50px 160px, #ffffff, rgba(0, 0, 0, 0)),
+    radial-gradient(1.5px 1.5px at 90px 40px, #ffffff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 130px 80px, #ffffff, rgba(0, 0, 0, 0));
+  background-size: 200px 200px;
+  opacity: 0.2;
+}
+
+/* Card com borda "elétrica" — usado no cartão de resultado em destaque */
+.electric-card {
+  box-shadow: 0 0 30px rgba(249, 115, 22, 0.3), inset 0 0 20px rgba(249, 115, 22, 0.1);
+}
+
+/* Animação de entrada dos cards de recomendação */
+@keyframes fadeInUpBlur {
+  0% { opacity: 0; transform: translateY(20px); filter: blur(10px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+.animate-entry {
+  animation: fadeInUpBlur 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.delay-75 { animation-delay: 75ms; }
+.delay-100 { animation-delay: 100ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; }
+
+/* Spinner do botão de busca */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 0.8s linear infinite;
+}
+
+/* Esconde scrollbar em listas horizontais (elenco/plataformas) */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Placeholder de pôster quando a API não retorna imagem */
+.poster-fallback {
+  background-image:
+    radial-gradient(1px 1px at 15% 25%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,0.3), transparent),
+    linear-gradient(160deg, #1a1a1a 0%, #0a0a0a 100%);
+}
